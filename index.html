@@ -350,15 +350,23 @@
     
         async function handleSubmit(event) {
             event.preventDefault();
-    
+
+            // Show loading overlay
+            const overlay = document.querySelector('.loading-overlay');
+            const loader = document.querySelector('.loader');
+            const successMessage = document.querySelector('.success-message');
+            overlay.style.display = 'flex';
+            loader.style.display = 'block';
+            successMessage.style.display = 'none';
+
             const teamSize = parseInt(document.getElementById('teamSize').value);
             const formData = {
                 teamName: document.getElementById('teamName').value,
                 teamSize: parseInt(document.getElementById('teamSize').value),
                 problemStatement: document.getElementById('problemStatement').value,
-                pptLink: document.getElementById('pptLink').value  // Add this line
+                pptLink: document.getElementById('pptLink').value
             };
-    
+
             // Collect data for all members
             for(let i = 1; i <= teamSize; i++) {
                 formData[`name${i}`] = document.getElementById(`name${i}`).value;
@@ -369,7 +377,7 @@
                 formData[`roomNumber${i}`] = document.getElementById(`hostelite${i}`).value === 'yes' ? 
                     document.getElementById(`roomNumber${i}`).value : '';
             }
-    
+
             try {
                 const response = await fetch('/api/submit', {
                     method: 'POST',
@@ -378,19 +386,29 @@
                     },
                     body: JSON.stringify(formData)
                 });
-    
+
                 if (response.ok) {
-                    alert('Registration successful!');
+                    // Hide loader and show success message
+                    loader.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Reset form
                     document.getElementById('registrationForm').reset();
                     document.getElementById('memberFormsContainer').innerHTML = '';
+                    
+                    // Hide overlay after 3 seconds
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 3000);
                 } else {
                     throw new Error('Submission failed');
                 }
             } catch (error) {
                 console.error('Error:', error);
+                overlay.style.display = 'none';
                 alert('Error submitting form. Please try again.');
             }
-    
+
             return false;
         }
     </script>
@@ -1006,6 +1024,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="app/js/parallax.js"></script>
     <script src="app/js/jquery.magnific-popup.min.js"></script>
-    
+    <div class="loading-overlay">
+        <div class="loader"></div>
+        <div class="success-message">
+            <div class="success-icon">✓</div>
+            <p>We have received your submission, you will hear back from us if your idea is selected.</p>
+            <p>Thank You and all the best!</p>
+        </div>
+    </div>
 </body>
 </html>
