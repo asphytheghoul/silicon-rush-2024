@@ -388,18 +388,32 @@
                 });
 
                 if (response.ok) {
-                    // Hide loader and show success message
-                    loader.style.display = 'none';
-                    successMessage.style.display = 'block';
+                    // Fade out loader
+                    loader.style.opacity = '0';
+                    
+                    // Wait for loader fade out, then switch to success message
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        
+                        // Trigger reflow to ensure transition works
+                        successMessage.offsetHeight;
+                        
+                        // Add show class for transition
+                        successMessage.classList.add('show');
+                    }, 300);
                     
                     // Reset form
                     document.getElementById('registrationForm').reset();
                     document.getElementById('memberFormsContainer').innerHTML = '';
                     
-                    // Hide overlay after 3 seconds
+                    // Hide overlay after 4 seconds (increased to account for animation)
                     setTimeout(() => {
-                        overlay.style.display = 'none';
-                    }, 3000);
+                        successMessage.classList.remove('show');
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                        }, 300);
+                    }, 4000);
                 } else {
                     throw new Error('Submission failed');
                 }
