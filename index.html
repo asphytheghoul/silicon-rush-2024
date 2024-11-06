@@ -260,7 +260,11 @@
                                 <option value="problem10">Student Innovation</option>
                             </select>
                         </div>
-    
+                        <div class="form-group mb-4">
+                            <label for="pptLink">Presentation Link (Google Slides/Drive Link)</label>
+                            <input type="url" class="form-control" id="pptLink" required>
+                            <small class="text-white"><strong>Note: Please ensure the presentation is shared with view access to ieee.cs.rr@pes.edu</strong></small>
+                        </div>
                         <button type="submit" class="tf-button btn-effect">
                             <span class="boder-fade"></span>                                     
                             <span class="effect">Submit Registration</span>
@@ -350,8 +354,9 @@
             const teamSize = parseInt(document.getElementById('teamSize').value);
             const formData = {
                 teamName: document.getElementById('teamName').value,
-                teamSize: teamSize,
-                problemStatement: document.getElementById('problemStatement').value
+                teamSize: parseInt(document.getElementById('teamSize').value),
+                problemStatement: document.getElementById('problemStatement').value,
+                pptLink: document.getElementById('pptLink').value  // Add this line
             };
     
             // Collect data for all members
