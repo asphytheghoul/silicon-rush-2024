@@ -1,0 +1,84 @@
+#registrationForm {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+}
+
+#registrationForm .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-family: 'Chakra Petch', sans-serif; /* Match your website font */
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+#registrationForm .form-control:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #5142FC;
+    box-shadow: none;
+    outline: none;
+}
+
+#registrationForm label {
+    color: #ffffff;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+#registrationForm select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.member-block {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.member-block h5 {
+    color: #ffffff;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+#registrationForm .tf-button {
+    background: linear-gradient(to right, #5142FC, #AF42FC);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#registrationForm .tf-button:hover {
+    background: linear-gradient(to right, #AF42FC, #5142FC);
+    transform: translateY(-2px);
+}
+
+#registrationForm ::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#registrationForm select option {
+    background: #1F1F2C;
+    color: white;
+    padding: 12px;
+}
