@@ -219,6 +219,7 @@
                     <div class="tf-title m-b60" data-aos="fade-up" data-aos-duration="800">
                         <p class="h8 sub-title">Register</p>
                         <h4 class="title">Team Registration</h4>
+                        <p class="text-white mb-4"><strong>Note: Only one member per team needs to fill this form.</strong></p>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -237,6 +238,11 @@
                                 <option value="3">3 Members</option>
                                 <option value="4">4 Members</option>
                             </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="teamEmail">Team Email ID (for communication)</label>
+                            <input type="email" class="form-control" id="teamEmail" required>
+                            <small class="text-white">All further communication will be sent to this email address.</small>
                         </div>
     
                         <div id="memberFormsContainer">
@@ -362,6 +368,7 @@
             const teamSize = parseInt(document.getElementById('teamSize').value);
             const formData = {
                 teamName: document.getElementById('teamName').value,
+                teamEmail: document.getElementById('teamEmail').value,
                 teamSize: parseInt(document.getElementById('teamSize').value),
                 problemStatement: document.getElementById('problemStatement').value,
                 pptLink: document.getElementById('pptLink').value
