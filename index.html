@@ -391,6 +391,10 @@
         async function handleSubmit(event) {
             event.preventDefault();
 
+            // Show preloader
+            const preloader = document.querySelector('.preload');
+            preloader.style.display = 'block';
+
             const formData = {
                 teamName: document.getElementById('teamName').value,
                 teamSize: parseInt(document.getElementById('teamSize').value),
@@ -418,6 +422,9 @@
                     body: JSON.stringify(formData)
                 });
 
+                // Hide preloader
+                preloader.style.display = 'none';
+
                 if (response.ok) {
                     // Show success popup
                     const popup = document.getElementById('successPopup');
@@ -434,6 +441,8 @@
                     throw new Error('Submission failed');
                 }
             } catch (error) {
+                // Hide preloader in case of error too
+                preloader.style.display = 'none';
                 console.error('Error:', error);
                 alert('Error submitting form. Please try again.');
             }
